@@ -1,8 +1,8 @@
-const recipes = [
+let recipes = [
     {
         id: 1,
         name: 'Паста',
-        image: './images/pasta.jpg',
+        image: '/images/pasta.jpg',
         ingredients: {
             'Мука' : '200гр',
             'Яйца' : '2шт',
@@ -21,7 +21,7 @@ const recipes = [
     {
         id: 2,
         name: 'Лосось',
-        image: './images/salmon.jpg',
+        image: '/images/salmon.jpg',
         ingredients: {
             'Мука' : '200гр',
             'Яйца' : '2шт',
@@ -40,7 +40,7 @@ const recipes = [
     {
         id: 3,
         name: 'Яйца',
-        image: './images/eggs.jpg',
+        image: '/images/eggs.jpg',
         ingredients: {
             'Мука' : '200гр',
             'Яйца' : '2шт',
@@ -59,7 +59,7 @@ const recipes = [
     {
         id: 4,
         name: 'Суп',
-        image: './images/soup.jpg',
+        image: '/images/soup.jpg',
         ingredients: {
             'Мука' : '200гр',
             'Яйца' : '2шт',

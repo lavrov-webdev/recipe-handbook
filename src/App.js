@@ -1,24 +1,20 @@
 import './App.css';
 import styled from 'styled-components';
-import { Container } from './Components/StyledComponents';
+import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './Components/Header';
-import RecipesList from './Components/RecipesList';
-
-const RecipesListSection = styled.section`
-  margin-top: 70px;
-`;
+import HomePage from './Pages/HomePage';
+import Recipe from './Pages/Recipe';
+import AddRecipe from './Pages/AddRecipe';
 
 
 function App() {
   return (
-    <>
+    <Router>
       <Header/>
-      <RecipesListSection>
-        <Container>
-          <RecipesList itemsInRow={2}/>
-        </Container>
-      </RecipesListSection>
-    </>
+      <Route exact path='/' component={HomePage}/>
+      <Route exact path='/add-recipe' component={AddRecipe}/>
+      <Route exact path="/recipes/:recipeId" component={Recipe} /> 
+    </Router>
   );
 }
 

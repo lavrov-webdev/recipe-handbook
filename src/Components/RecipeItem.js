@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 const RecipeItemStyled = styled.li`
     width: ${props => {
@@ -40,7 +41,7 @@ const BlackLine = styled.div`
     }
 `;
 
-const ItemLink = styled.a`
+const ItemLink = styled(Link)`
     width: 211px;
     position: absolute;
     left: 393px;
@@ -73,7 +74,7 @@ export default function RecipeItem({recipe , fr}) {
         <RecipeItemStyled fr={fr} image={recipe.image}>
             <BlackLine>
                 {recipe.name}
-                <ItemLink href='#'>Смотреть весь рецепт</ItemLink>
+                <ItemLink to={`/recipes/${recipe.id}`}>Смотреть весь рецепт</ItemLink>
             </BlackLine>
         </RecipeItemStyled>
     )
