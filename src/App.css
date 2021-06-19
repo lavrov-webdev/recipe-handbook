@@ -1,3 +1,37 @@
-* {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
+  color: #FCFCFC
+}
+
+body, html, h1, h2, h3, h4, h5, h6,
+ul, li, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #FCFCFC;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all .3s;
+}
+
+button {
+  cursor: pointer;
+  transition: all .3s;
+  border: none;
+  background-color: transparent;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
 }

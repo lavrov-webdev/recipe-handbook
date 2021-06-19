@@ -1,30 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
+import { Container } from './Components/StyledComponents';
+import Header from './Components/Header';
+import RecipesList from './Components/RecipesList';
 
-const Wrapper = styled.main`
-  
-`
+const RecipesListSection = styled.section`
+  margin-top: 70px;
+`;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+      <RecipesListSection>
+        <Container>
+          <RecipesList itemsInRow={2}/>
+        </Container>
+      </RecipesListSection>
+    </>
   );
 }
 
 export default App;
+
