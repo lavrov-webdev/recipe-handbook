@@ -2,6 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import { styled } from 'styled-components';
 
+const Wrapper = styled.main`
+  
+`
+
 function App() {
   return (
     <div className="App">
