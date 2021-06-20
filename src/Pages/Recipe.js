@@ -15,7 +15,6 @@ const BigImage = styled.div`
 
 const Title = styled.h1`
     font-size: 72px;
-    color: #3C3C3C;
     font-weight: bold;
     background-color: rgba(252, 252, 252, .8);
     padding: 0 30px;
@@ -24,7 +23,6 @@ const Title = styled.h1`
 
 const H2 = styled.h2`
     font-size: 30px;
-    color: #3c3c3c;
     margin-bottom: 15px;
 `;
 
@@ -45,7 +43,6 @@ const IngridientList = styled.ul`
 const IngridienItem = styled.li`
     heigth: calc((100% - 10px) / 2);
     font-size: 16px;
-    color: #3c3c3c;
 
     &:nth-child(n+3) {
         margin-left: 30px;
@@ -65,7 +62,6 @@ const StepsList = styled.ul`
 const StepsItem = styled.li`
     width: 540px;
     font-size: 14px;
-    color: #3c3c3c;
     position: relative;
     padding-left: 32px;
 

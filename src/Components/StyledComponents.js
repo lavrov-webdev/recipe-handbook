@@ -10,6 +10,7 @@ const Container = styled.div`
 const StyledButton = styled(Link)`
     width: 100%;
     background-color: #3c3c3c;
+    color: #fcfcfc;
     font-size: 36px;
     font-weight: bold;
     text-align: center;

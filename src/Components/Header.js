@@ -7,6 +7,7 @@ const HeaderStyled = styled.header`
     background-color: #3c3c3c;
     font-size: 36px;
     font-weight: bold;
+    color: #fcfcfc;
 `;
 
 export default function Header() {
