@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
-import recipes from './Recipes';
+import Context from '../Context';
 import RecipeItem from './RecipeItem';
 
 const ResipecListStyled = styled.ul`
@@ -10,6 +10,9 @@ const ResipecListStyled = styled.ul`
 `;
 
 export default function RecipesList({itemsInRow}) {
+
+    const {recipes} = useContext(Context)
+
     return (
         <ResipecListStyled>
             {recipes.map(recipe => <RecipeItem key={recipe.id} recipe={recipe} fr={itemsInRow}/>)}

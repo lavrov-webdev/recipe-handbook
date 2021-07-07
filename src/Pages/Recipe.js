@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../Context';
 import styled from 'styled-components';
 import { Container } from '../Components/StyledComponents';
-import recipes from '../Components/Recipes';
 import { StyledButton } from '../Components/StyledComponents';
 
 const BigImage = styled.div`
@@ -82,7 +82,11 @@ const StepsCount = styled.div`
 
 
 export default function Recipe({ match, location }) {
+
+    const { recipes } = useContext(Context);
+
     const recipe = recipes[match.params.recipeId - 1];
+
     return (
         <>
             <BigImage image={recipe.image}/>
