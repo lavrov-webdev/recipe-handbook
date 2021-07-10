@@ -7,3 +7,5 @@
 3. Добавление нового рецепта
 
 Во время работы использовал консольный Git 
+
+Макет делал сам в фигме https://www.figma.com/file/dau8lC40K8jeAFTZEXapXI/Untitled?node-id=0%3A1
