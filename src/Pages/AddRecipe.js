@@ -1,4 +1,4 @@
-import React, { useState, createRef, useContext, useEffect } from 'react';
+import React, { useState, useContext, } from 'react';
 import Context from '../Context';
 import styled from 'styled-components';
 import { Container, StyledButton } from '../Components/StyledComponents';
@@ -52,6 +52,10 @@ const AddButton = styled.button`
     margin-top: 30px;
 `;
 
+const AddRecipeButton = styled(AddButton)`
+    padding: 1.3em 0;
+`;
+
 const StepInputWrapper = styled.li`
     width: 100%;
     counter-increment: steps;
@@ -96,29 +100,23 @@ export default function AddRecipe() {
 
     const [name, setName] = useState('');
 
-    const photo = createRef();
+    const [ingredients, setIngredients] = useState({});
 
-    const [ingidients, setIngidients] = useState({});
+    const [ingredientName, setIngredientName] = useState('');
 
-    const [ingidientName, setIngidientName] = useState('');
-
-    const [ingidientCount, setIngidientCount] = useState('');
+    const [ingredientCount, setIngredientCount] = useState('');
 
     const [steps, setSteps] = useState({0: ''});
 
     const [stepId, setStepId] = useState(1);
 
-    useEffect(() => {
-        setStepId(Math.max(...Object.keys(steps).map(e => parseInt(e))) + 1)
-    }, [Object.keys(steps).length])
-
     const addIngridient = () => {
-        if (ingidientName == '' || ingidientCount == '') return
-        let newIngridients = JSON.parse(JSON.stringify(ingidients));
-        newIngridients[ingidientName] = ingidientCount;
-        setIngidients(newIngridients);
-        setIngidientName('');
-        setIngidientCount('');
+        if (ingredientName == '' || ingredientCount == '') return
+        let newIngridients = JSON.parse(JSON.stringify(ingredients));
+        newIngridients[ingredientName] = ingredientCount;
+        setIngredients(newIngridients);
+        setIngredientName('');
+        setIngredientCount('');
     }
 
     const changeStepHandler = (value, key) => {
@@ -131,13 +129,35 @@ export default function AddRecipe() {
         let tempSteps = JSON.parse(JSON.stringify(steps));
         tempSteps[stepId] = '';
         setSteps(tempSteps);
+        setStepId(prev => prev + 1)
     }
 
     const deleteStep = key => {
-        if (stepId < 2) return
+        if (Object.keys(steps).length == 1) return
         let tempSteps = JSON.parse(JSON.stringify(steps));
         delete tempSteps[key];
         setSteps(tempSteps);
+    }
+
+    const addRecipe = () => {
+        const newRecipe = {
+            id: recipes.length + 1,
+            name,
+            image: '/images/placeholder.jpg',
+            ingredients,
+            steps: Object.values(steps)
+        }
+
+        setRecipes([...recipes, newRecipe]);
+
+        console.log(recipes)
+
+        setName('');
+        setIngredients({});
+        setSteps({0: ''})
+        setStepId(1)
+        setIngredientName('');
+        setIngredientCount('');
     }
     
     return (
@@ -149,21 +169,17 @@ export default function AddRecipe() {
                     <Input type='text' value={name} onInput={e => setName(e.target.value)}/>
                 </Group>
                 <Group>
-                    <H2>Фотография</H2>
-                    <Input type="file" ref={photo}/>
-                </Group>
-                <Group>
                     <H2>Ингридиенты</H2>
                     <ul>
-                        {Object.entries(ingidients).map( ([key, value]) => (
-                            <li key={key}>
-                                <span>{key}: </span><span>{value}</span>
+                        {Object.entries(ingredients).map( ([key, value]) => (
+                            <li key={key} style={{marginBottom: '10px'}}>
+                                <span>{key} - </span><b>{value}</b>
                             </li>
                         ))}
                     </ul>
                     <form onSubmit={e => {e.preventDefault(); addIngridient()}} action=''>
-                        <IngridientNameInput value={ingidientName} onChange={e => setIngidientName(e.target.value)}/>
-                        <IngridientCountInput value={ingidientCount} onChange={e => setIngidientCount(e.target.value)}/>
+                        <IngridientNameInput value={ingredientName} onChange={e => setIngredientName(e.target.value)}/>
+                        <IngridientCountInput value={ingredientCount} onChange={e => setIngredientCount(e.target.value)}/>
                         <AddButton type='submit'>Добавить ингридиент</AddButton>
                     </form>
                 </Group>
@@ -183,6 +199,9 @@ export default function AddRecipe() {
                         ))}
                     </ul>
                     <AddButton onClick={addStep}>Добавить действие</AddButton>
+                </Group>
+                <Group>
+                    <AddRecipeButton onClick={addRecipe}>Добавить рецепт</AddRecipeButton>
                 </Group>
             </Container>
             <StyledButton to='/'>Назад к списку рецептов</StyledButton>
